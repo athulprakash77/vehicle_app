@@ -19,7 +19,7 @@ app.post("/entry",async(req,res)=>{
     let data=new vModel(req.body)
     console.log(data)
     await data.save()
-    res.send("data")
+    res.send(data)
     })
     
 
@@ -29,5 +29,11 @@ app.get("/viewall",async(req,res)=>{
     res.send(data)
     })
     
+
+        
+app.get("/search",async(req,res)=>{
+    let data=await vModel.find()
+    res.send(data)
+    })
 
 app.listen(3000)
