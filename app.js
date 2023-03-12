@@ -8,6 +8,7 @@ Mongoose.connect("mongodb+srv://college:college12345@cluster0.nk3uqez.mongodb.ne
 
 
 var app=Express()
+app.use(Cors())
 app.use(Bodyparser.json())
 app.use(Bodyparser.urlencoded({extended:true}))
 
@@ -31,8 +32,8 @@ app.get("/viewall",async(req,res)=>{
     
 
         
-app.get("/search",async(req,res)=>{
-    let data=await vModel.find()
+app.post("/search",async(req,res)=>{
+    let data=await vModel.find(req.body)
     res.send(data)
     })
 
